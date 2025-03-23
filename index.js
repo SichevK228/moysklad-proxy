@@ -25,3 +25,4 @@ app.get("/products", async (req, res) => {
 app.listen(port, () => {
   console.log(`✅ Прокси-сервер запущен на порту ${port}`);
 });
+
