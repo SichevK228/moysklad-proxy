@@ -5,6 +5,7 @@ const axios = require("axios");
 const app = express();
 const port = process.env.PORT || 3000;
 
+// Разрешаем CORS
 app.use(cors());
 app.use(express.json());
 
@@ -16,6 +17,10 @@ app.get("/products", async (req, res) => {
         "Content-Type": "application/json"
       }
     });
+
+    // Кросс-доменное разрешение
+    res.setHeader("Access-Control-Allow-Origin", "*");
+
     res.json(response.data);
   } catch (error) {
     res.status(500).json({ error: error.toString() });
@@ -25,4 +30,3 @@ app.get("/products", async (req, res) => {
 app.listen(port, () => {
   console.log(`✅ Прокси-сервер запущен на порту ${port}`);
 });
-
